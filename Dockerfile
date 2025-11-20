@@ -1,9 +1,8 @@
+# Используем официальный образ n8n
 FROM n8nio/n8n:latest
 
-# Render подставляет PORT автоматически
-ENV N8N_LISTEN_ADDRESS=0.0.0.0
+# Если нужно копировать кастомные настройки или workflow
+# COPY ./workflows /home/node/.n8n/workflows
 
-# Важно: не ломаем ENTRYPOINT исходного образа
-ENTRYPOINT ["tini", "--"]
-
-CMD ["n8n"]
+# Указываем рабочую директорию
+WORKDIR /home/node/.n8n
